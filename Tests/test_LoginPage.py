@@ -13,6 +13,7 @@ from Locators.Locators import Locators
 
 class Test_Login(BaseTest):
 
+    @pytest.mark.webtest
     @pytest.mark.order(1)
     def test_verify_login_page_title(self):
         self.loginPage = LoginPage(self.driver)

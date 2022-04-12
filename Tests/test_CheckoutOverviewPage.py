@@ -20,6 +20,7 @@ from Config.config import TestData
 class Test_CheckoutOverviewPage(BaseTest):
 
     '''To check if added items are getting displayed in OvertView page also'''
+    @pytest.mark.webtest
     @pytest.mark.order(19)
     def test_verify_added_items_getting_displayed(self):
         loginPage = LoginPage(self.driver)
@@ -49,7 +50,8 @@ class Test_CheckoutOverviewPage(BaseTest):
         checkInfo.do_enter_your_info()
         checkInfo.do_click_on_continue_button()
         checkoutOverview = CheckoutOverviewPage(self.driver)
-        checkout_overview_page_header = checkoutOverview.get_element_text(Locators.CHECKOUT_OVERVIEW_PAGE_HEADER)
+        # checkout_overview_page_header = checkoutOverview.get_element_text(Locators.CHECKOUT_OVERVIEW_PAGE_HEADER)
+        checkout_overview_page_header = checkoutOverview.checkout_overview_page_header()
         assert checkout_overview_page_header == TestData.CHECKOUT_OVERVIEW_HEADER
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.PNG) 
 

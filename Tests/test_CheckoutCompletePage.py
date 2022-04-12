@@ -19,6 +19,7 @@ from Pages.CheckoutCompletePage import CheckoutCompletePage
 
 class Test_CheckoutCompletePage(BaseTest):
 
+    @pytest.mark.webtest
     @pytest.mark.order(21)
     def test_verify_checkout_complete_page_header(self):
         loginPage = LoginPage(self.driver)
@@ -33,9 +34,8 @@ class Test_CheckoutCompletePage(BaseTest):
         checkoutOverview = CheckoutOverviewPage(self.driver)
         checkoutOverview.do_click_on_finish_button()
         checkoutcomplete = CheckoutCompletePage(self.driver)
-        checkoutcompletepageheader = checkoutcomplete.get_element_text(Locators.CHECKOUT_COMPLETE_PAGE_HEADER)
+        checkoutcompletepageheader = checkoutcomplete.checkout_complete_page_header()
         assert checkoutcompletepageheader == TestData.CHECKOUT_COMPLETE_PAGE_HEADER
-        checkoutcompletepageheader = checkoutcomplete.get_element_text(Locators.CHECKOUT_COMPLETE_PAGE_HEADER)
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.PNG)
 
     @pytest.mark.order(22)
@@ -54,7 +54,7 @@ class Test_CheckoutCompletePage(BaseTest):
         # checkoutOverview.is_items_getting_displayed_in_cart()
         checkoutOverview.do_click_on_finish_button()
         checkoutcomplete = CheckoutCompletePage(self.driver)
-        checkoutcompletepageordermsg = checkoutcomplete.get_element_text(Locators.CHECKOUT_COMPLETE_PAGE_ORDER_MESSAGE)
+        checkoutcompletepageordermsg = checkoutcomplete.checkout_complete_page_order_message()
         assert checkoutcompletepageordermsg == TestData.CHECKOUT_COMPLETE_PAGE_ORDER_MESSAGE
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.PNG)
 

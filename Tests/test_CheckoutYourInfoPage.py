@@ -16,6 +16,7 @@ from Locators.Locators import Locators
 
 class Test_CheckoutYourInfoPage(BaseTest):
 
+    @pytest.mark.webtest
     @pytest.mark.order(16)
     def test_verify_CheckoutYourInfo_page_header(self):
         loginPage = LoginPage(self.driver)
@@ -26,6 +27,7 @@ class Test_CheckoutYourInfoPage(BaseTest):
         addToCart.do_click_checkout_button()
         checkInfo = CheckoutYourInfoPage(self.driver)
         title = checkInfo.get_element_text(Locators.CHECKOUT_YOUR_INFO_PAGE_HEADER)
+        title = checkInfo.get_checkout_your_info_page_header()
         assert title == TestData.CHECKOUT_YOUR_INFO_HEADER
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.JPG)  
 

@@ -14,6 +14,7 @@ from EnumsPackage.Enums import Sort_Productss
 class Test_Home(BaseTest):
     
     '''Title'''
+    @pytest.mark.webtest
     @pytest.mark.order(4)
     def test_verify_home_page_title(self):
         self.loginPage = LoginPage(self.driver)

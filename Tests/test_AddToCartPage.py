@@ -14,13 +14,14 @@ from Pages.LoginPage import LoginPage
 
 class Test_AddTOCartPage(BaseTest):
     
+    @pytest.mark.webtest
     @pytest.mark.order(14)
     def test_verify_cart_page_header(self):
         self.loginPage = LoginPage(self.driver)
         homePage = self.loginPage.do_login()
         homePage.do_shopping()
         addToCart = AddToCartPage(self.driver)
-        cart_page_header = addToCart.get_element_text(Locators.CART_PAGE_HEADER)
+        cart_page_header = addToCart.get_add_to_cart_page_header()
         assert cart_page_header == TestData.CART_PAGE_HEADER
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.PNG)
 

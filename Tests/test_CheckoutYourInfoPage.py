@@ -1,5 +1,4 @@
 import sys, os
-import time
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../')
 
@@ -12,7 +11,6 @@ from Tests.test_Base import BaseTest
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Config.config import TestData
-from Locators.Locators import Locators
 
 class Test_CheckoutYourInfoPage(BaseTest):
 
@@ -26,7 +24,6 @@ class Test_CheckoutYourInfoPage(BaseTest):
         addToCart = AddToCartPage(self.driver)
         addToCart.do_click_checkout_button()
         checkInfo = CheckoutYourInfoPage(self.driver)
-        title = checkInfo.get_element_text(Locators.CHECKOUT_YOUR_INFO_PAGE_HEADER)
         title = checkInfo.get_checkout_your_info_page_header()
         assert title == TestData.CHECKOUT_YOUR_INFO_HEADER
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.JPG)  

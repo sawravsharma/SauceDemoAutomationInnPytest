@@ -13,6 +13,7 @@ from Locators.Locators import Locators
 
 class Test_Login(BaseTest):
 
+    '''verifying login page title'''
     @pytest.mark.webtest
     @pytest.mark.order(1)
     def test_verify_login_page_title(self):
@@ -21,6 +22,7 @@ class Test_Login(BaseTest):
         assert title == TestData.LOGIN_PAGE_TITLE
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.PNG)
 
+    '''login with correct credentials'''
     @pytest.mark.order(2)
     def test_verify_login_into_app(self):
         self.loginPage = LoginPage(self.driver)

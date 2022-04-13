@@ -14,6 +14,7 @@ from EnumsPackage.Enums import Sort_Productss
 class Test_Home(BaseTest):
     
     '''Title'''
+    @pytest.hookimpl()
     @pytest.mark.webtest
     @pytest.mark.order(4)
     def test_verify_home_page_title(self):
@@ -22,6 +23,7 @@ class Test_Home(BaseTest):
         title = homePage.get_title()
         assert title == TestData.HOME_PAGE_TITLE
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.PNG)
+        print(title)
 
     '''Header'''
     @pytest.mark.order(5)
@@ -31,6 +33,7 @@ class Test_Home(BaseTest):
         header = homePage.get_header_value()
         allure.attach(self.driver.get_screenshot_as_png(), attachment_type=AttachmentType.JPG)
         assert header == TestData.HOME_PAGE_HEADER
+        print(header)
 
     '''Cart Icon'''
     @pytest.mark.order(6)

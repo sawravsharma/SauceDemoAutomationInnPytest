@@ -18,7 +18,7 @@ class AddToCartPage(BasePage):
         def is_items_exist_in_cart(self):
             for getValue in Products:
                 searchProductPresence  = self.driver.find_element_by_xpath(
-                     "//*[text()='%s']" % str(getValue.value))
+                     "//*[contains(text(),'%s')]" % str(getValue.value))
             assert searchProductPresence.text == getValue.value
 
         def do_click_checkout_button(self):

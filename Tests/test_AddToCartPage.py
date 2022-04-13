@@ -7,15 +7,15 @@ import pytest
 import allure 
 from allure_commons.types import AttachmentType
 from Pages.AddToCartPage import AddToCartPage
-from Locators.Locators import Locators
 from Tests.test_Base import BaseTest
 from Config.config import TestData
 from Pages.LoginPage import LoginPage
 
 class Test_AddTOCartPage(BaseTest):
-    
+
+    '''verifying Cart Page h1 tag'''
     @pytest.mark.webtest
-    @pytest.mark.order(14)
+    @pytest.mark.order(15)
     def test_verify_cart_page_header(self):
         self.loginPage = LoginPage(self.driver)
         homePage = self.loginPage.do_login()
@@ -25,7 +25,8 @@ class Test_AddTOCartPage(BaseTest):
         assert cart_page_header == TestData.CART_PAGE_HEADER
         allure.attach(self.driver.get_screenshot_as_png(),attachment_type=AttachmentType.PNG)
 
-    @pytest.mark.order(15)
+    '''Verifying items added in cart'''
+    @pytest.mark.order(14)
     def test_verify_item_in_cart(self):
         self.loginPage = LoginPage(self.driver)
         homePage = self.loginPage.do_login()

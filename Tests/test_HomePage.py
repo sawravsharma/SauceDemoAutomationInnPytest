@@ -31,8 +31,8 @@ class Test_Home(BaseTest):
         self.loginPage = LoginPage(self.driver)
         homePage = self.loginPage.do_login()
         header = homePage.get_header_value()
-        allure.attach(self.driver.get_screenshot_as_png(), attachment_type=AttachmentType.JPG)
         assert header == TestData.HOME_PAGE_HEADER
+        allure.attach(self.driver.get_screenshot_as_png(), attachment_type=AttachmentType.JPG)
         print(header)
 
     '''Cart Icon'''

@@ -1,4 +1,3 @@
-
 import os,sys
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../')
@@ -54,11 +53,7 @@ class HomePage(BasePage):
         for price in highToLowSortedProductsPrice:
             priceListHighToLow.append(price.text.replace("$",""))
             print(priceListHighToLow)
-        # priceListHighToLow.append(float(price.text.replace("$","")))           
-        # total = 10.40
-        # for ele in range(0,len(priceListHighToLow)):
-        #     total = total + priceListHighToLow[ele]
-        #     print('$',total)
+        assert priceListHighToLow[0]>priceListHighToLow[1], "products are not sorted"
 
     '''To sort products in Z to A name range'''
     def sort_products_by_Z_To_A(self):
@@ -90,7 +85,7 @@ class HomePage(BasePage):
     def do_shopping(self):
         for product in Products:
             product = self.driver.find_element_by_xpath(
-                "//div[contains(text(),'%s')]/following::button" % str(product.value))
+                "//div[contains(text(),'%s')]//following::button" % str(product.value))
             product.click()
         self.do_click(Locators.CART_ICON)
 

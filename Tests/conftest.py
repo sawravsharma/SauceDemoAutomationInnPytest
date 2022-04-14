@@ -9,8 +9,8 @@ def init_driver(request):
         web_driver = webdriver.Chrome(ChromeDriverManager().install())
         web_driver.maximize_window()
         web_driver.delete_all_cookies()
-        web_driver.implicitly_wait(5)
-    if request.param == "firefox":
+    else:
+        request.param == "firefox"
         web_driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
         web_driver.maximize_window()
         web_driver.delete_all_cookies()
